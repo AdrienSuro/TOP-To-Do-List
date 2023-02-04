@@ -1,0 +1,25 @@
+{
+  "name": "top-to-do-list",
+  "version": "1.0.0",
+  "description": "This project is part of The Odin Project Fullstack JS Path",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrienSuro/TOP-To-Do-List.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrienSuro/TOP-To-Do-List/issues"
+  },
+  "homepage": "https://github.com/AdrienSuro/TOP-To-Do-List#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
