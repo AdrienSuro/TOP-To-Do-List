@@ -1,58 +1,47 @@
-console.log("It works");
+import createBlock from "./init.js";
+
+console.log("js works fine");
+console.log(this === undefined ? "true" : "false");
+
+createBlock();
 
 const createTask = (title) => {
-  const description = "Enter a description";
-  const dueDate = "January";
-  const priority = "high";
-
-  return {title, description, dueDate, priority}
-};
+  const test = "we are inside a task"
+  const testlog = console.log("Testlog inside the task works")
+  return {title, test}
+}
 
 const createToDoList = (title) => {
+  const toDoArray = [];
   const remove = () => toDoArray.slice;
-  const move = () => ;
+  const move = () => toDoArray.splice;
   const tasks = new Object();
-  let i = 1;
-  const addTask = () => {
-    let taskTitle = prompt("Enter title")
-    i+=1;
+  const addTask = function() {
+    console.log(this);
+    let promptTaskName = prompt("What's the task name?");
+    this[promptTaskName] = createTask(promptTaskName);
+  }
 
-
-  return {title, tasks, remove, move, addTask}
-}
-
-//List of the different To-Dos : 
-
-const toDoArray = new Array();
-
-const addListBtn = document.getElementById("addListBtn");
-addListBtn.addEventListener("click", addListToToDoArray)
-
-function addListToToDoArray() {
-  let newList = createToDoList(....); //update the arguments
-  toDoArray.push(newList);
-}
-
-
-
-// Créer une fonction qui permet de réordonner les ToDo selon leur degré d'importance. Cette fonction agira sur l'array de ToDo.
-const personFactory = (name, age) => {
-  const sayHello = () => console.log('hello!');
-  return { name, age, sayHello };
+  return {remove, move, tasks, addTask, title };
 };
 
-const jeff = personFactory('jeff', 27);
+const firstToDoList = createToDoList("Work");
+console.log(firstToDoList);
+console.log("line21");
+firstToDoList.addTask();
+firstToDoList.addTask();
 
-console.log(jeff.name); // 'jeff'
 
-jeff.sayHello(); // calls the function and logs 'hello!'
+console.log(firstToDoList.js);
+console.log(firstToDoList.html);
 
-let testList = ["string", 5, {title: "Work", importance: "high"}]
-console.log(testList[2]);
+firstToDoList.js.testlog;
 
-let testObject = {
-  firstTask: {title: "Work", importance:"high"}, 
-  secondTask: {title: "Fun", importance: "low"},
-  thirdTask : {title: "Family", importance: "medium"}}
 
-console.log(testObject.firstTask.title);
+
+
+
+
+
+
+console.log("Reached the end of index.js")
