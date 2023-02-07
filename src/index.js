@@ -18,20 +18,20 @@ const createToDoList = (title) => {
     let promptTaskName = prompt("What's the task name?");
     this[promptTaskName] = createTask(promptTaskName);
     taskArray.push(promptTaskName);
+    console.log(firstToDoList)
   }
+
+  // Trying to create possibility to add a Task through a button but this refers to the button, not to the object.
 
   return {remove, move, taskArray, addTask, title };
 };
 
 const firstToDoList = createToDoList("Work");
-firstToDoList.addTask();
-firstToDoList.addTask();
+addTaskBtn.addEventListener("click", firstToDoList.addTaskFct);
 let z = firstToDoList.taskArray.length;
 
 for (let i = z-1; i>=0; i--) {
   console.log(firstToDoList.taskArray[i]);
 };
-
-firstToDoList.js.testlog();
 
 console.log("Reached the end of index.js")
