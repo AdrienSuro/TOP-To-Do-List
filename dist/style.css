@@ -1,3 +1,23 @@
 body {
   background-color: red;
 }
+
+#addToDoBtn {
+  background-color: greenyellow;
+}
+
+#addTaskBtn {
+  background-color: pink;
+}
+
+#toDoDiv {
+  width: 400px;
+  height: 700px;
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+}
+
+#taskDiv {
+  
+}

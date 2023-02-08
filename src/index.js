@@ -1,4 +1,5 @@
-import createBlock from './init.js'
+import {createBlock} from './init.js'
+import {appendToDoList} from './init.js'
 
 createBlock();
 
@@ -15,7 +16,7 @@ const createToDoList = (title) => {
   const move = () => toDoArray.splice;
   const taskArray = [];
   const addTask = function() {
-    let promptTaskName = prompt("What's the task name?");
+    let promptTaskName = prompt("What's the task name ?");
     let task = createTask(promptTaskName);
     taskArray.push(task);
     console.log(taskArray);
@@ -34,21 +35,17 @@ function addToDoList() {
   console.log(toDoListArray);
 }
 
-//WORKING [show the title of each to-do list (ex: work, leisure)]
-function showToDoListArray() {
-  let body = document.getElementById("body");
-  let listArrayParagraph = document.createElement('div');
-  let z = toDoListArray.length;
-  for (let i = z-1; i>=0; i--) {
-    console.log(toDoListArray[i].title);
-    listArrayParagraph.innerHTML += toDoListArray[i].title + " ";
+//Function that will show all the to do lists on the DOM : 
+function showToDoLists() {
+  console.log("We're inside show ToDoLists")
+  for (let i = 0; i<toDoListArray.length; i++) {
+    appendToDoList(toDoListArray[i])
   }
-  body.appendChild(listArrayParagraph);
 }
 
-addTaskBtn.addEventListener("click", addToDoList);
-secondBtn.addEventListener("click", showToDoListArray);
-thirdBtn.addEventListener("click", function() {toDoListArray[1].addTask()});
+addTaskBtnTest.addEventListener("click", addToDoList);
+secondBtn.addEventListener("click", showToDoLists);
+thirdBtn.addEventListener("click", function() {toDoListArray[0].addTask()});
 
 
 //const firstToDoList = createToDoList("Work");
