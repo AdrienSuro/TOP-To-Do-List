@@ -26,7 +26,7 @@ export function createBlock() {
 
 export function appendToDoList(list) {
   console.log("We're inside the fct appendToDoList")
-  let body = document.getElementById("body");
+  let main = document.getElementById("main");
 
   let toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("id", "toDoDiv");
@@ -49,5 +49,5 @@ export function appendToDoList(list) {
     toDoDiv.appendChild(taskDiv);
   }
 
-  body.appendChild(toDoDiv);
+  main.appendChild(toDoDiv);
 }

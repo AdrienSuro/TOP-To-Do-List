@@ -11,13 +11,16 @@ body {
 }
 
 #toDoDiv {
-  width: 400px;
-  height: 700px;
+  margin: 30px;
+  width: 250px;
+  height: 300px;
   background-color: white;
+  border: 2px black solid;
   display: flex;
   flex-flow: column;
 }
 
-#taskDiv {
-  
+#main {
+  display: flex;
+  flex-flow: row;
 }
