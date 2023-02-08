@@ -1,6 +1,8 @@
-import createBlock from "./init.js";
+import createBlock from './init.js'
 
 createBlock();
+
+let toDoListArray = [];
 
 function createTask(title) {
   const test = `we are inside the ${title} task`;
@@ -9,29 +11,55 @@ function createTask(title) {
 }
 
 const createToDoList = (title) => {
-  const toDoArray = [];
   const remove = () => toDoArray.slice;
   const move = () => toDoArray.splice;
-  const taskArray = new Array();
+  const taskArray = [];
   const addTask = function() {
-    console.log(this);
     let promptTaskName = prompt("What's the task name?");
-    this[promptTaskName] = createTask(promptTaskName);
-    taskArray.push(promptTaskName);
-    console.log(firstToDoList)
+    let task = createTask(promptTaskName);
+    taskArray.push(task);
+    console.log(taskArray);
   }
 
   // Trying to create possibility to add a Task through a button but this refers to the button, not to the object.
 
-  return {remove, move, taskArray, addTask, title };
+  return {remove, move, addTask, title, taskArray};
 };
 
-const firstToDoList = createToDoList("Work");
-addTaskBtn.addEventListener("click", firstToDoList.addTaskFct);
-let z = firstToDoList.taskArray.length;
+// WORKING [add a to do list object ex: work, leisure...] :
+function addToDoList() {
+  let listname = prompt("What's the name of your list ?");
+  let createlist = createToDoList(listname);
+  toDoListArray.push(createlist);
+  console.log(toDoListArray);
+}
 
-for (let i = z-1; i>=0; i--) {
-  console.log(firstToDoList.taskArray[i]);
-};
+//WORKING [show the title of each to-do list (ex: work, leisure)]
+function showToDoListArray() {
+  let body = document.getElementById("body");
+  let listArrayParagraph = document.createElement('div');
+  let z = toDoListArray.length;
+  for (let i = z-1; i>=0; i--) {
+    console.log(toDoListArray[i].title);
+    listArrayParagraph.innerHTML += toDoListArray[i].title + " ";
+  }
+  body.appendChild(listArrayParagraph);
+}
+
+addTaskBtn.addEventListener("click", addToDoList);
+secondBtn.addEventListener("click", showToDoListArray);
+thirdBtn.addEventListener("click", function() {toDoListArray[1].addTask()});
+
+
+//const firstToDoList = createToDoList("Work");
+//addTaskBtn.addEventListener("click", () => console.log(firstToDoList));
+//let z = firstToDoList.taskArray.length;
+
+//firstToDoList.addTask();  
+//console.log(firstToDoList)
+
+//for (let i = z-1; i>=0; i--) {
+//  console.log(firstToDoList.taskArray[i]);
+//};
 
 console.log("Reached the end of index.js")

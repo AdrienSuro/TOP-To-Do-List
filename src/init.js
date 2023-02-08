@@ -11,8 +11,18 @@ function createBlock() {
   addTaskBtn.setAttribute("id", "addTaskBtn");
   addTaskBtn.innerHTML = "Add a task";
 
+  let secondBtn = document.createElement("button");
+  secondBtn.setAttribute("id", "secondBtn");
+  secondBtn.innerHTML = "Show names of all the to-do-lists";
+
+  let thirdBtn = document.createElement("button");
+  thirdBtn.setAttribute("id", "thirdBtn");
+  thirdBtn.innerHTML = "Add task to the to-do list";
+
   body.appendChild(mainDiv);
   body.appendChild(addTaskBtn);
+  body.appendChild(secondBtn);
+  body.appendChild(thirdBtn);
 
   return{addTaskBtn}
 }
