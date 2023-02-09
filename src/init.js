@@ -31,6 +31,8 @@ export function appendToDoList(list) {
   let toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("id", "toDoDiv");
 
+  let sidebar = document.getElementById("sidebar");
+
   let addTaskBtn = document.createElement("button");
   addTaskBtn.setAttribute("id", "addTaskBtn");
   addTaskBtn.innerHTML = "Add a task" ;
@@ -39,7 +41,7 @@ export function appendToDoList(list) {
   listTitle.setAttribute("id", "listTitle");
   listTitle.innerHTML = list.title
   
-  toDoDiv.appendChild(listTitle);
+  sidebar.appendChild(listTitle);
 
   for (let i=0; i<list.taskArray.length; i++) {
     let taskDiv = document.createElement("div");

@@ -1,3 +1,7 @@
+* {
+  margin: 0px;
+}
+
 body {
   background-color: red;
 }
@@ -23,4 +27,11 @@ body {
 #main {
   display: flex;
   flex-flow: row;
+  justify-items: flex-start;
+}
+
+#sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: pink;
 }

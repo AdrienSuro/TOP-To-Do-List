@@ -4,11 +4,13 @@ import {appendToDoList} from './init.js'
 createBlock();
 
 let toDoListArray = [];
+let taskArray = [];
 
-function createTask(title) {
+function createTask(title, dueDate, description, priority) {
   const test = `we are inside the ${title} task`;
   const testlog = function() {console.log("Testlog inside the task works")};
-  return {title, testlog, test}
+  const remove = () => {};
+  return {title, testlog, test, dueDate, description, priority}
 }
 
 const createToDoList = (title) => {
