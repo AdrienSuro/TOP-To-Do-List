@@ -11,16 +11,42 @@
 <body>
   <div id="body">
     <div id="header">
-
+      <p>My To-Do List</p>
     </div>
-    <div id="main">
-      <div id="sidebar">
-
-      </div>
-      <div id="taskSpace">
-        
+    <div id="sidebar">
+      <p>My projects</p>
+      <div id="projectDiv">All projects</div>
+    </div>
+    <div id="taskSpace">
+      <p>My tasks</p>
+      <div id="taskDiv">
+        <div>¤</div>
+        <p>Learn Javascript</p>
+        <p>10/06/2023</p>
       </div>
     </div>
+    <form id="taskForm">
+      <label id="wideFormElement" for="title">Give your task a title</label>
+      <input type="text" id="title" name="title"> 
+      <label id="wideFormElement" for="description">Describe your task</label>
+      <textarea type="text" id="description" name="description" cols="30" rows="10"></textarea> 
+      <label for="dueDate">Due Date</label>
+      <input type="date" id="dueDate" name="dueDate">
+      <label for="priority">Priority</label>
+      <select name="priority">
+        <option value="high">High</option>
+        <option value="medium" selected>Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <label id="project">Project</label>
+      <select name="project">
+        <option value="Default">Default</option>
+        <option value="Javascript">Javascript</option>
+        <option value="CSS">CSS</option>
+        //-> create list of options dynamically on Javascript, from the To Do Array !!
+      </select>
+      <button id="saveTaskBtn">Save Task</button>
+    </form>
   </div>
 </body>
 </html>

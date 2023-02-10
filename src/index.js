@@ -6,11 +6,11 @@ createBlock();
 let toDoListArray = [];
 let taskArray = [];
 
-function createTask(title, dueDate, description, priority) {
+function createTask(title, dueDate, description, priority, project) {
   const test = `we are inside the ${title} task`;
   const testlog = function() {console.log("Testlog inside the task works")};
   const remove = () => {};
-  return {title, testlog, test, dueDate, description, priority}
+  return {title, testlog, test, dueDate, description, priority, project}
 }
 
 const createToDoList = (title) => {
@@ -49,16 +49,12 @@ addTaskBtnTest.addEventListener("click", addToDoList);
 secondBtn.addEventListener("click", showToDoLists);
 thirdBtn.addEventListener("click", function() {toDoListArray[0].addTask()});
 
+  let saveTaskBtn = document.getElementById("saveTaskBtn");
+  saveTaskBtn.addEventListener("click", () => {
+    console.log("Hi console");
+    let newTask = createTask(title, dueDate, description, priority, project);
+    taskArray.push(newTask);
+    console.log(taskArray);
+  })
 
-//const firstToDoList = createToDoList("Work");
-//addTaskBtn.addEventListener("click", () => console.log(firstToDoList));
-//let z = firstToDoList.taskArray.length;
-
-//firstToDoList.addTask();  
-//console.log(firstToDoList)
-
-//for (let i = z-1; i>=0; i--) {
-//  console.log(firstToDoList.taskArray[i]);
-//};
-
-console.log("Reached the end of index.js")
+console.log("Reached the end of index.js");
