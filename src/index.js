@@ -1,7 +1,7 @@
 import {createBlock} from './init.js'
 import {appendToDoList} from './init.js'
 
-createBlock();
+// createBlock();
 
 let toDoListArray = [];
 let taskArray = [];
@@ -45,9 +45,18 @@ function showToDoLists() {
   }
 }
 
-addTaskBtnTest.addEventListener("click", addToDoList);
-secondBtn.addEventListener("click", showToDoLists);
-thirdBtn.addEventListener("click", function() {toDoListArray[0].addTask()});
+//On click, this function creates a new Task and adds it to the taskArray ! 
+function addTask() {
+  let newForm = document.getElementById("taskForm");
+  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+  taskArray.push(newTask);
+  console.log(newForm.title.value);
+  console.log(taskArray);
+}
+
+// addTaskBtnTest.addEventListener("click", addToDoList);
+// secondBtn.addEventListener("click", showToDoLists);
+// thirdBtn.addEventListener("click", function() {toDoListArray[0].addTask()});
 
   let saveTaskBtn = document.getElementById("saveTaskBtn");
   saveTaskBtn.addEventListener("click", () => {
