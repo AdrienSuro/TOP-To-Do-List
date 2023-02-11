@@ -46,13 +46,13 @@ function showToDoLists() {
 }
 
 //On click, this function creates a new Task and adds it to the taskArray ! 
-function addTask() {
-  let newForm = document.getElementById("taskForm");
-  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
-  taskArray.push(newTask);
-  console.log(newForm.title.value);
-  console.log(taskArray);
-}
+// function addTask() {
+//   let newForm = document.getElementById("taskForm");
+//   let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+//   taskArray.push(newTask);
+//   console.log(newForm.title.value);
+//   console.log(taskArray);
+// }
 
 // addTaskBtnTest.addEventListener("click", addToDoList);
 // secondBtn.addEventListener("click", showToDoLists);
@@ -60,8 +60,8 @@ function addTask() {
 
   let saveTaskBtn = document.getElementById("saveTaskBtn");
   saveTaskBtn.addEventListener("click", () => {
-    console.log("Hi console");
-    let newTask = createTask(title, dueDate, description, priority, project);
+    let newForm = document.getElementById("taskForm");
+    let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
     taskArray.push(newTask);
     console.log(taskArray);
   })

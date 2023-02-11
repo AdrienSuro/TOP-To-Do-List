@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script defer src="index.bundle.js"></script>
+  <script defer src="./index.bundle.js"></script>
+  <script defer src="./init.bundle.js"></script>
+  <script defer src="./dom.bundle.js"></script>
   <link rel='stylesheet' href="./style.css">
   <title>To-Do List</title>
 </head>
@@ -33,7 +35,7 @@
       <label for="dueDate">Due Date</label>
       <input type="date" id="dueDate" name="dueDate">
       <label for="priority">Priority</label>
-      <select name="priority">
+      <select id="priority" name="priority">
         <option value="high">High</option>
         <option value="medium" selected>Medium</option>
         <option value="low">Low</option>
@@ -45,7 +47,7 @@
         <option value="CSS">CSS</option>
         //-> create list of options dynamically on Javascript, from the To Do Array !!
       </select>
-      <input type="button" id="saveTaskBtn" value="Save Task" onclick="addTask()"></button>
+      <input type="button" id="saveTaskBtn" value="Save Task"></button>
     </form>
   </div>
 </body>
