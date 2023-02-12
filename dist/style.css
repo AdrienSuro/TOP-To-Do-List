@@ -28,12 +28,22 @@
   background-color: ghostwhite;
 }
 
-#projectDiv {
+#projectBtn {
   background-color: pink;
   border: solid grey 2px;
   border-radius: 5px;
   margin: 10px;
+  margin-left: 20px;
   padding: 5px;
+  width: 80%;
+}
+
+#projectBtn:first-child {
+  margin-left: 10px;
+}
+
+#projectBtn:active {
+  background-color: red;
 }
 
 #taskDiv {
@@ -78,7 +88,7 @@
   width: 30vw;
   height: 50vh;
   display: grid;
-  /* visibility: hidden; */
+  visibility: hidden;
   grid-auto-flow: row;
   grid-template-rows: repeat(3, 1fr) 2fr repeat(3, 1fr);
   grid-template-columns: 1fr 1fr;
