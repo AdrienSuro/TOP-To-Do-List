@@ -1,10 +1,11 @@
 export {taskArray, projectArray, filterTasks}
-import { appendProjects, taskForm } from "./dom";
+import { appendProjects, taskForm, updateProjectSelect } from "./dom";
 
 let taskArray = [];
 let projectArray = ["Default"];
 
 appendProjects()
+updateProjectSelect()
 
 
 function createTask(title, dueDate, description, priority, project) {

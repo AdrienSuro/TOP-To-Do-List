@@ -1,9 +1,10 @@
-import { taskArray, filterTasks, projectArray,  } from "./index.js"
+import { taskArray, filterTasks, projectArray } from "./index.js"
 
-const sidebarProjects = document.getElementById("sidebarProjects")
+const sidebarProjects = document.getElementById("sidebarProjects");
 const taskSpace = document.getElementById("taskSpace");
 const body = document.getElementById("body");
 export const taskForm = document.getElementById("taskForm");
+const projectSelect = document.getElementById("projectSelect");
 
 // Function that filters taskArray according to the Project (to be used in the left column)
 // DOMELEMENT.addEventListener("click",() => testFunction("Javascript", taskArray));
@@ -37,6 +38,7 @@ testBtn2.addEventListener("click", () => {
   console.log(projectArray);
   sidebarProjects.innerHTML = "";
   appendProjects();
+  updateProjectSelect();
 });
 
 //Show tasks on the page : 
@@ -48,6 +50,13 @@ testBtn1.addEventListener("click", () => {
   taskForm.style.visibility = "visible" ;
 })
 
+//Dynamically create project options in the form :
+export function updateProjectSelect() {
+  projectSelect.innerHTML = "";
+  for (let i=0; i<projectArray.length; i++) {
+    projectSelect.innerHTML += `<option value ="${projectArray[i]}">${projectArray[i]}</option>`;
+  }
+};
 
 
 
