@@ -46,6 +46,10 @@
   background-color: red;
 }
 
+#addProjectForm {
+  visibility: hidden;
+}
+
 #taskDiv {
   background-color: rgb(218, 215, 179);
   border: solid grey 2px;

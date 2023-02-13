@@ -21,22 +21,23 @@
       <button id="testBtn2">Add project</button>
       <div id="sidebarProjects">
       </div>
+      <form id="addProjectForm" method="get">
+        <label for="newProjectName">New project's name</label>
+        <input type="text" name="newProjectName" id="newProjectName">
+        <input type="submit" id="addNewProjectBtn" value="Save new project">
+      </form>
     </div>
     <div id="taskSpace">
-      <p>My tasks</p>
-      <div id="taskDiv">
-        <div>¤</div>
-        <p>Learn Javascript</p>
-        <p>10/06/2023</p>
-      </div>
+      <p>First, add a task or a project !</p>
     </div>
-    <form id="taskForm">
+    </div>
+    <form id="taskForm" method="get">
       <label id="wideFormElement" for="title">Give your task a title</label>
-      <input type="text" id="title" name="title"> 
+      <input type="text" id="title" name="title" required /> 
       <label id="wideFormElement" for="description">Describe your task</label>
       <textarea type="text" id="description" name="description" cols="30" rows="10"></textarea> 
       <label for="dueDate">Due Date</label>
-      <input type="date" id="dueDate" name="dueDate">
+      <input type="date" id="dueDate" name="dueDate" required />
       <label for="priority">Priority</label>
       <select id="priority" name="priority">
         <option value="high">High</option>
@@ -46,7 +47,7 @@
       <label id="project">Project</label>
       <select name="project" id="projectSelect">
       </select>
-      <input type="button" id="saveTaskBtn" value="Save Task"></button>
+      <input type="submit" id="saveTaskBtn" value="Save Task">
     </form>
   </div>
 </body>

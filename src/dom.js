@@ -5,10 +5,8 @@ const taskSpace = document.getElementById("taskSpace");
 const body = document.getElementById("body");
 export const taskForm = document.getElementById("taskForm");
 const projectSelect = document.getElementById("projectSelect");
-
-// Function that filters taskArray according to the Project (to be used in the left column)
-// DOMELEMENT.addEventListener("click",() => testFunction("Javascript", taskArray));
-
+const addProjectForm = document.getElementById("addProjectForm");
+const addNewProjectBtn = document.getElementById("addNewProjectBtn")
 
 // Retrieves all the Projects from TaskArray and show them in sidebar
 export function appendProjects() {
@@ -28,13 +26,16 @@ export function appendProjects() {
       }
     })
     sidebarProjects.appendChild(project)
-    taskForm.style.visibility = "hidden" ;
   }
 };
 
 const testBtn2 = document.getElementById("testBtn2");
 testBtn2.addEventListener("click", () => {
-  projectArray.push(prompt("Project name :"))
+  addProjectForm.style.visibility = "visible"
+})
+
+addNewProjectBtn.addEventListener("click", () => {
+  projectArray.push(addProjectForm.newProjectName.value);
   console.log(projectArray);
   sidebarProjects.innerHTML = "";
   appendProjects();

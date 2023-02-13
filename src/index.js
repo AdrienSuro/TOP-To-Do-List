@@ -22,10 +22,12 @@ function filterTasks(project, array) {
 let saveTaskBtn = document.getElementById("saveTaskBtn");
 saveTaskBtn.addEventListener("click", () => {
   let newForm = document.getElementById("taskForm");
-  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
-  taskArray.push(newTask);
-  console.log(taskArray);
-  taskForm.style.visibility = "hidden" ;
+  if (newForm.title.value != "" && newForm.dueDate.value != "") {
+    let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+    taskArray.push(newTask);
+    console.log(taskArray);
+    taskForm.style.visibility = "hidden" ;
+  }
 })
 
 console.log("test")
