@@ -1,5 +1,5 @@
 export {taskArray, projectArray, filterTasks}
-import { appendProjects, taskForm, updateProjectSelect } from "./dom";
+import { appendProjects, taskForm, updateProjectSelect, showTasks } from "./dom";
 
 let taskArray = [];
 let projectArray = ["Default"];
@@ -24,7 +24,9 @@ saveTaskBtn.addEventListener("click", () => {
   let newForm = document.getElementById("taskForm");
   if (newForm.title.value != "" && newForm.dueDate.value != "") {
     let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+    console.log(newTask.project);
     taskArray.push(newTask);
+    showTasks(newTask.project);
     console.log(taskArray);
     taskForm.style.visibility = "hidden" ;
   }

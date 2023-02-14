@@ -16,21 +16,23 @@ export function appendProjects() {
     let project = document.createElement('button');
     project.innerHTML = projectArray[i];
     project.setAttribute("id", "projectBtn");
-    project.addEventListener("click", () => {
-      let filteredArray = filterTasks(projectArray[i], taskArray);
-      taskSpace.innerHTML = "";
-      for (let i=0; i<filteredArray.length; i++) {
-      taskSpace.innerHTML += 
-        `<div id="taskDiv">
-        <p>${filteredArray[i].dueDate}</p>
-        <p>${filteredArray[i].title}</p>
-        <p>${filteredArray[i].priority}</p>`
-      }
-    })
+    project.addEventListener("click", () => showTasks(projectArray[i]))
     sidebarProjects.appendChild(project)
   }
 };
 
+export function showTasks(arg) {
+  let filteredArray = filterTasks(arg, taskArray);
+  console.log(filteredArray)
+  taskSpace.innerHTML = "";
+  for (let i=0; i<filteredArray.length; i++) {
+  taskSpace.innerHTML += 
+    `<div id="taskDiv">
+    <p>${filteredArray[i].dueDate}</p>
+    <p>${filteredArray[i].title}</p>
+    <p>${filteredArray[i].priority}</p>`
+  }
+}
 
 testBtn2.addEventListener("click", () => {
   addProjectForm.style.visibility = "visible"
