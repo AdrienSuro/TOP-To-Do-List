@@ -9,6 +9,7 @@ const addProjectForm = document.getElementById("addProjectForm");
 const addNewProjectBtn = document.getElementById("addNewProjectBtn")
 const testBtn1 = document.getElementById("testBtn1")
 const testBtn2 = document.getElementById("testBtn2");
+const showAllTasksBtn = document.getElementById("showAllTasksBtn");
 
 // Retrieves all the Projects from TaskArray and show them in sidebar
 export function appendProjects() {
@@ -59,3 +60,14 @@ export function updateProjectSelect() {
     projectSelect.innerHTML += `<option value ="${projectArray[i]}">${projectArray[i]}</option>`;
   }
 };
+
+showAllTasksBtn.addEventListener("click", () => {
+  taskSpace.innerHTML = "";
+  for (let i=0; i<taskArray.length; i++) {
+    taskSpace.innerHTML += 
+    `<div id="taskDiv">
+    <p>${taskArray[i].dueDate}</p>
+    <p>${taskArray[i].title}</p>
+    <p>${taskArray[i].priority}</p>`
+  }
+});

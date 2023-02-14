@@ -3,7 +3,7 @@
 }
 
 #body {
-  background-color: beige;
+  background-color: ghostwhite;
   display: grid;
   grid-template-columns: 200px 1fr;
   grid-template-rows: 10vh 90vh;
@@ -19,7 +19,19 @@
 #sidebar {
   grid-row: 2/3;
   grid-column: 1/2;
-  background-color: antiquewhite;
+  background-color: ghostwhite;
+  display: flex;
+  flex-flow: column;
+  margin: 10px;
+}
+
+#sidebar > * {
+  margin-bottom: 10px;
+}
+
+#showAllTasksBtn {
+  margin-top: auto;
+  justify-self: end;
 }
 
 #taskSpace {
