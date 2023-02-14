@@ -7,6 +7,8 @@ export const taskForm = document.getElementById("taskForm");
 const projectSelect = document.getElementById("projectSelect");
 const addProjectForm = document.getElementById("addProjectForm");
 const addNewProjectBtn = document.getElementById("addNewProjectBtn")
+const testBtn1 = document.getElementById("testBtn1")
+const testBtn2 = document.getElementById("testBtn2");
 
 // Retrieves all the Projects from TaskArray and show them in sidebar
 export function appendProjects() {
@@ -29,7 +31,7 @@ export function appendProjects() {
   }
 };
 
-const testBtn2 = document.getElementById("testBtn2");
+
 testBtn2.addEventListener("click", () => {
   addProjectForm.style.visibility = "visible"
 })
@@ -40,11 +42,8 @@ addNewProjectBtn.addEventListener("click", () => {
   sidebarProjects.innerHTML = "";
   appendProjects();
   updateProjectSelect();
+  addProjectForm.style.visibility = "hidden"
 });
-
-//Show tasks on the page : 
-const testBtn1 = document.getElementById("testBtn1")
-// testBtn1.addEventListener("click", )
 
 //ShowForm on the page dynamically;
 testBtn1.addEventListener("click", () => {
@@ -58,6 +57,3 @@ export function updateProjectSelect() {
     projectSelect.innerHTML += `<option value ="${projectArray[i]}">${projectArray[i]}</option>`;
   }
 };
-
-
-
