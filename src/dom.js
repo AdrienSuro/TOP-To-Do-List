@@ -1,17 +1,17 @@
-import { taskArray, filterTasks, projectArray } from "./index.js"
+import { taskArray, filterTasks, projectArray, createTask } from "./index.js"
 
 const sidebarProjects = document.getElementById("sidebarProjects");
 const taskSpace = document.getElementById("taskSpace");
 const body = document.getElementById("body");
-export const taskForm = document.getElementById("taskForm");
+const taskForm = document.getElementById("taskForm");
 const projectSelect = document.getElementById("projectSelect");
-const addProjectForm = document.getElementById("addProjectForm");
-const addNewProjectBtn = document.getElementById("addNewProjectBtn")
-const testBtn1 = document.getElementById("testBtn1")
-const testBtn2 = document.getElementById("testBtn2");
+const newProjectForm = document.getElementById("newProjectForm");
+const submitNewProjectBtn = document.getElementById("submitNewProjectBtn")
+const addTaskBtn = document.getElementById("addTaskBtn")
+const addProjectBtn = document.getElementById("addProjectBtn");
 const showAllTasksBtn = document.getElementById("showAllTasksBtn");
+const newForm = document.getElementById("taskForm");
 
-// Retrieves all the Projects from TaskArray and show them in sidebar
 export function appendProjects() {
   for (let i=0; i<projectArray.length; i++) {
     let project = document.createElement('button');
@@ -22,9 +22,19 @@ export function appendProjects() {
   }
 };
 
-export function showTasks(arg) {
+newForm.addEventListener('submit', saveTask, false)
+
+function saveTask(event) {
+  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+    taskArray.push(newTask);
+    showTasks(newTask.project);
+    newForm.reset();
+    taskForm.style.visibility = "hidden"
+    event.preventDefault();
+}
+
+function showTasks(arg) {
   let filteredArray = filterTasks(arg, taskArray);
-  console.log(filteredArray)
   taskSpace.innerHTML = "";
   for (let i=0; i<filteredArray.length; i++) {
   taskSpace.innerHTML += 
@@ -35,29 +45,26 @@ export function showTasks(arg) {
   }
 }
 
-testBtn2.addEventListener("click", () => {
-  addProjectForm.style.visibility = "visible"
+addProjectBtn.addEventListener("click", () => {
+  newProjectForm.style.visibility = "visible"
 })
 
-addNewProjectBtn.addEventListener("click", addProject, false);
+submitNewProjectBtn.addEventListener("click", addProject, false);
 
 function addProject(event) {
-  projectArray.push(addProjectForm.newProjectName.value);
-  console.log(projectArray);
+  projectArray.push(newProjectForm.newProjectName.value);
   sidebarProjects.innerHTML = "";
   appendProjects();
   updateProjectSelect();
-  addProjectForm.reset();
-  addProjectForm.style.visibility = "hidden";
+  newProjectForm.reset();
+  newProjectForm.style.visibility = "hidden";
   event.preventDefault();
 };
 
-//ShowForm on the page dynamically;
-testBtn1.addEventListener("click", () => {
+addTaskBtn.addEventListener("click", () => {
   taskForm.style.visibility = "visible" ;
 })
 
-//Dynamically create project options in the form :
 export function updateProjectSelect() {
   projectSelect.innerHTML = "";
   for (let i=0; i<projectArray.length; i++) {
