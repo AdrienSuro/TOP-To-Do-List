@@ -20,17 +20,36 @@ function filterTasks(project, array) {
 }
 
 let saveTaskBtn = document.getElementById("saveTaskBtn");
-saveTaskBtn.addEventListener("click", () => {
-  let newForm = document.getElementById("taskForm");
-  if (newForm.title.value != "" && newForm.dueDate.value != "") {
-    let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+let newForm = document.getElementById("taskForm");
+
+newForm.addEventListener('submit', saveTask, false)
+
+export function saveTask(event) {
+  console.log("We're inside saveTask")
+  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
     console.log(newTask.project);
     taskArray.push(newTask);
     showTasks(newTask.project);
     console.log(taskArray);
-    taskForm.style.visibility = "hidden" ;
-  }
-})
+    newForm.reset();
+    taskForm.style.visibility = "hidden"
+    // setTimeout(hideTaskForm, 1000);
+    event.preventDefault();
+}
+// saveTaskBtn.addEventListener("click", () => {
+//   if (newForm.title.value != "" && newForm.dueDate.value != "") {
+//     let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
+//     console.log(newTask.project);
+//     taskArray.push(newTask);
+//     showTasks(newTask.project);
+//     console.log(taskArray);
+//     setTimeout(hideTaskForm, 10000);
+//   }
+// })
+
+// function hideTaskForm() {
+//   taskForm.style.visibility = "hidden"
+// }
 
 console.log("test")
 
