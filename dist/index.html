@@ -5,8 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script defer src="./index.bundle.js"></script>
-  <!-- <script defer src="./init.bundle.js"></script>
-  <script defer src="./dom.bundle.js"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Lobster&family=Open+Sans&family=Raleway&display=swap" rel="stylesheet">
   <link rel='stylesheet' href="./style.css">
   <title>To-Do List</title>
 </head>
@@ -16,9 +17,10 @@
       <p>My To-Do List</p>
     </div>
     <div id="sidebar">
-      <p>My projects</p>
-      <button id="addTaskBtn">Add task</button>
-      <button id="addProjectBtn">Add project</button>
+      <div id="sidebarHeader">
+        <p>My projects</p>
+        <button id="addProjectBtn">+</button>
+      </div>
       <div id="sidebarProjects">
       </div>
       <form id="newProjectForm" method="post">
@@ -29,10 +31,13 @@
       <button id="showAllTasksBtn">Show all tasks</button>
     </div>
     <div id="taskSpace">
-      <p>First, add a task or a project !</p>
+      <p> <span id="finger">👈   </span>  To start, add a task or a project !</p>
+      <p> <span id="finger2"> 👇   </span></p>
+      <button id="addTaskBtn">Add task</button>
     </div>
     <form id="taskForm">
       <label id="wideFormElement" for="title">Give your task a title</label>
+      <button id="closeForm">X</button>
       <input type="text" id="title" name="title" required /> 
       <label id="wideFormElement" for="description">Describe your task</label>
       <textarea type="text" id="description" name="description" cols="30" rows="10"></textarea> 

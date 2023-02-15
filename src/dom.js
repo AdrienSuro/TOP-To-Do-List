@@ -7,10 +7,10 @@ const taskForm = document.getElementById("taskForm");
 const projectSelect = document.getElementById("projectSelect");
 const newProjectForm = document.getElementById("newProjectForm");
 const submitNewProjectBtn = document.getElementById("submitNewProjectBtn")
-const addTaskBtn = document.getElementById("addTaskBtn")
 const addProjectBtn = document.getElementById("addProjectBtn");
 const showAllTasksBtn = document.getElementById("showAllTasksBtn");
 const newForm = document.getElementById("taskForm");
+const closeForm = document.getElementById("closeForm")
 
 export function appendProjects() {
   for (let i=0; i<projectArray.length; i++) {
@@ -33,6 +33,10 @@ function saveTask(event) {
     event.preventDefault();
 }
 
+closeForm.addEventListener('click', () => {
+  taskForm.style.visibility = "hidden";
+})
+
 function showTasks(arg) {
   let filteredArray = filterTasks(arg, taskArray);
   taskSpace.innerHTML = "";
@@ -43,6 +47,8 @@ function showTasks(arg) {
     <p>${filteredArray[i].title}</p>
     <p>${filteredArray[i].priority}</p>`
   }
+  taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
+  addEventListener();
 }
 
 addProjectBtn.addEventListener("click", () => {
@@ -61,9 +67,12 @@ function addProject(event) {
   event.preventDefault();
 };
 
-addTaskBtn.addEventListener("click", () => {
+export function addEventListener() {
+  const addTaskBtn = document.getElementById("addTaskBtn")
+  addTaskBtn.addEventListener("click", () => {
   taskForm.style.visibility = "visible" ;
 })
+};
 
 export function updateProjectSelect() {
   projectSelect.innerHTML = "";
@@ -81,4 +90,5 @@ showAllTasksBtn.addEventListener("click", () => {
     <p>${taskArray[i].title}</p>
     <p>${taskArray[i].priority}</p>`
   }
+  taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
 });
