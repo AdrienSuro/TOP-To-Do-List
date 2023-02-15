@@ -39,14 +39,18 @@ testBtn2.addEventListener("click", () => {
   addProjectForm.style.visibility = "visible"
 })
 
-addNewProjectBtn.addEventListener("click", () => {
+addNewProjectBtn.addEventListener("click", addProject, false);
+
+function addProject(event) {
   projectArray.push(addProjectForm.newProjectName.value);
   console.log(projectArray);
   sidebarProjects.innerHTML = "";
   appendProjects();
   updateProjectSelect();
-  addProjectForm.style.visibility = "hidden"
-});
+  addProjectForm.reset();
+  addProjectForm.style.visibility = "hidden";
+  event.preventDefault();
+};
 
 //ShowForm on the page dynamically;
 testBtn1.addEventListener("click", () => {

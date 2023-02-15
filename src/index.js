@@ -33,25 +33,9 @@ export function saveTask(event) {
     console.log(taskArray);
     newForm.reset();
     taskForm.style.visibility = "hidden"
-    // setTimeout(hideTaskForm, 1000);
     event.preventDefault();
 }
-// saveTaskBtn.addEventListener("click", () => {
-//   if (newForm.title.value != "" && newForm.dueDate.value != "") {
-//     let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
-//     console.log(newTask.project);
-//     taskArray.push(newTask);
-//     showTasks(newTask.project);
-//     console.log(taskArray);
-//     setTimeout(hideTaskForm, 10000);
-//   }
-// })
 
-// function hideTaskForm() {
-//   taskForm.style.visibility = "hidden"
-// }
-
-console.log("test")
 
 const createToDoList = (title) => {
   const remove = () => toDoArray.slice;
