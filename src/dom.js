@@ -13,7 +13,7 @@ const newForm = document.getElementById("taskForm");
 const closeForm = document.getElementById("closeForm")
 
 export function appendProjects() {
-  for (let i=0; i<projectArray.length; i++) {
+  for (let i=1; i<projectArray.length; i++) {
     let project = document.createElement('button');
     project.innerHTML = projectArray[i];
     project.setAttribute("id", "projectBtn");
@@ -81,7 +81,9 @@ export function updateProjectSelect() {
   }
 };
 
-showAllTasksBtn.addEventListener("click", () => {
+showAllTasksBtn.addEventListener("click", showAllTasks)
+
+export function showAllTasks() {
   taskSpace.innerHTML = "";
   for (let i=0; i<taskArray.length; i++) {
     taskSpace.innerHTML += 
@@ -91,4 +93,4 @@ showAllTasksBtn.addEventListener("click", () => {
     <p>${taskArray[i].priority}</p>`
   }
   taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
-});
+};
