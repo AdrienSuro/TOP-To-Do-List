@@ -1,4 +1,4 @@
-import { taskArray, filterTasks, projectArray, createTask } from "./index.js"
+import { taskArray, filterTasks, projectArray, createTask, deleteTask } from "./index.js"
 
 const sidebarProjects = document.getElementById("sidebarProjects");
 const taskSpace = document.getElementById("taskSpace");
@@ -40,12 +40,26 @@ closeForm.addEventListener('click', () => {
 function showTasks(arg) {
   let filteredArray = filterTasks(arg, taskArray);
   taskSpace.innerHTML = "";
+  taskSpace.innerHTML += 
+    `<div id="taskDiv">
+    <p>Due Date</p>
+    <p>Title</p>
+    <p>Priority</p>
+    <button id=></button>`;
   for (let i=0; i<filteredArray.length; i++) {
+  console.log(filteredArray);
   taskSpace.innerHTML += 
     `<div id="taskDiv">
     <p>${filteredArray[i].dueDate}</p>
     <p>${filteredArray[i].title}</p>
-    <p>${filteredArray[i].priority}</p>`
+    <p>${filteredArray[i].priority}</p>`;
+    let deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.innerHTML = "Delete";
+    deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
+    deleteTaskBtn.addEventListener("click", () => {
+      console.log("brrr");
+    });
+    taskSpace.appendChild(deleteTaskBtn);
   }
   taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
   addEventListener();
@@ -93,4 +107,6 @@ export function showAllTasks() {
     <p>${taskArray[i].priority}</p>`
   }
   taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
+  addEventListener();
+  console.log(taskArray);
 };
