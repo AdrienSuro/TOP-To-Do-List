@@ -17,7 +17,7 @@ let heading =
   <p>Due Date</p>
   <p>Title</p>
   <p>Priority</p>
-  <button id=></button>`;
+  <p>Delete task</p>`;
 
 export function appendProjects() {
   for (let i=1; i<projectArray.length; i++) {
@@ -56,7 +56,7 @@ function showTasks(arg) {
       <p>${filteredArray[i].title}</p>
       <p>${filteredArray[i].priority}</p>`
     let deleteTaskBtn = document.createElement("button");
-    deleteTaskBtn.innerHTML = "Delete";
+    deleteTaskBtn.innerHTML = "X";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
       console.log("inside event listener");

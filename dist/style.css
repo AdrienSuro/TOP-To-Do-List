@@ -138,14 +138,13 @@ button {
   margin: 10px;
   padding: 5px;
   display : grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr 1fr;
 }
 
 #taskDiv:first-child {
   border: none;
   background-color: transparent;
   font-size: 1.4rem;
-  grid-template-columns: 1fr 4fr 1fr 1fr;
 }
 
 #deleteTaskBtn {
