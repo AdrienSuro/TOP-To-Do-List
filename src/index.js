@@ -13,12 +13,8 @@ let addTaskBtn = document.getElementById("addTaskBtn")
   })
 
 function createTask(title, dueDate, description, priority, project) {
-  const deleteTask = function() {
-    console.log(this);
-    console.log(taskArray);
-  };
   const index = (taskArray.length)
-  return {title, dueDate, description, priority, project, index, deleteTask}
+  return {title, dueDate, description, priority, project, index}
 }
 
 function filterTasks(project, array) {

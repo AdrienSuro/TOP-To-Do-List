@@ -49,22 +49,23 @@ function showTasks(arg) {
   taskSpace.innerHTML = "";
   taskSpace.innerHTML += heading;
   for (let i=0; i<filteredArray.length; i++) {
-    console.log(taskArray);
-    taskSpace.innerHTML += 
-      `<div id="taskDiv">
-      <p>${filteredArray[i].dueDate}</p>
+    let wrapper = document.createElement("div")
+    wrapper.setAttribute("id", "taskDiv");
+    wrapper.innerHTML = 
+      `<p>${filteredArray[i].dueDate}</p>
       <p>${filteredArray[i].title}</p>
-      <p>${filteredArray[i].priority}</p>`;
+      <p>${filteredArray[i].priority}</p>`
     let deleteTaskBtn = document.createElement("button");
     deleteTaskBtn.innerHTML = "Delete";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
-      console.log("brrr");
+      console.log("inside event listener");
       deleteTask(filteredArray[i].index)
       console.log(taskArray);
-      showTasks(filteredArray[i].project);
+      wrapper.remove();
     });
-    taskSpace.appendChild(deleteTaskBtn);
+    wrapper.appendChild(deleteTaskBtn);
+    taskSpace.appendChild(wrapper);
   }
   let addTaskBtn = document.createElement("button");
   addTaskBtn.innerHTML = "Add Task"
@@ -108,7 +109,10 @@ export function showAllTasks() {
     <p>${taskArray[i].title}</p>
     <p>${taskArray[i].priority}</p>`
   }
-  taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
-  addEventListener();
-  console.log(taskArray);
+  let addTaskBtn = document.createElement("button");
+  addTaskBtn.innerHTML = "Add Task"
+  addTaskBtn.addEventListener("click", () => {
+    taskForm.style.visibility = "visible" ;
+  });
+  taskSpace.appendChild(addTaskBtn);
 };
