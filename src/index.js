@@ -1,4 +1,4 @@
-export {taskArray, projectArray, filterTasks, createTask, deleteTask, taskNr}
+export {taskArray, projectArray, filterTasks, createTask, deleteTask}
 import { appendProjects, updateProjectSelect, addEventListener } from "./dom";
 
 let taskArray = [];
@@ -12,10 +12,8 @@ let addTaskBtn = document.getElementById("addTaskBtn")
   taskForm.style.visibility = "visible" ;
   })
 
-  var taskNr = 0;
-
 function createTask(title, dueDate, description, priority, project) {
-  const index = taskNr;
+  const index = (taskArray.length)
   return {title, dueDate, description, priority, project, index}
 }
 

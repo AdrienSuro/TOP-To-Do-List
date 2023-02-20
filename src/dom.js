@@ -34,7 +34,6 @@ newForm.addEventListener('submit', saveTask, false)
 function saveTask(event) {
   let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
     taskArray.push(newTask);
-    taskNr += 1;
     showTasks(newTask.project);
     newForm.reset();
     taskForm.style.visibility = "hidden"
@@ -103,25 +102,12 @@ showAllTasksBtn.addEventListener("click", showAllTasks)
 
 export function showAllTasks() {
   taskSpace.innerHTML = "";
-  taskSpace.innerHTML += heading;
   for (let i=0; i<taskArray.length; i++) {
-    let wrapper = document.createElement("div");
-    wrapper.setAttribute("id", "taskDiv");
-    wrapper.innerHTML = 
-      `<p>${taskArray[i].dueDate}</p>
-      <p>${taskArray[i].title}</p>
-      <p>${taskArray[i].priority}</p>`;
-    let deleteTaskBtn = document.createElement("button");
-    deleteTaskBtn.innerHTML = "X";
-    deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
-    deleteTaskBtn.addEventListener("click", () => {
-      console.log("inside event listener");
-      deleteTask(taskArray[i].index);
-      console.log(taskArray);
-      wrapper.remove();
-    });
-    wrapper.appendChild(deleteTaskBtn);
-    taskSpace.appendChild(wrapper);
+    taskSpace.innerHTML += 
+    `<div id="taskDiv">
+    <p>${taskArray[i].dueDate}</p>
+    <p>${taskArray[i].title}</p>
+    <p>${taskArray[i].priority}</p>`
   }
   let addTaskBtn = document.createElement("button");
   addTaskBtn.innerHTML = "Add Task"
