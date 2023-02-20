@@ -6,7 +6,11 @@ let projectArray = ["Default"];
 
 appendProjects()
 updateProjectSelect()
-addEventListener()
+
+let addTaskBtn = document.getElementById("addTaskBtn")
+  addTaskBtn.addEventListener("click", () => {
+  taskForm.style.visibility = "visible" ;
+  })
 
 function createTask(title, dueDate, description, priority, project) {
   const deleteTask = function() {
@@ -25,4 +29,5 @@ function filterTasks(project, array) {
 function deleteTask(i) {
   console.log("inside deleteTask")
   taskArray.splice(i, 1)
+  console.log(taskArray);
 }

@@ -12,6 +12,13 @@ const showAllTasksBtn = document.getElementById("showAllTasksBtn");
 const newForm = document.getElementById("taskForm");
 const closeForm = document.getElementById("closeForm")
 
+let heading = 
+  `<div id="taskDiv">
+  <p>Due Date</p>
+  <p>Title</p>
+  <p>Priority</p>
+  <button id=></button>`;
+
 export function appendProjects() {
   for (let i=1; i<projectArray.length; i++) {
     let project = document.createElement('button');
@@ -40,29 +47,31 @@ closeForm.addEventListener('click', () => {
 function showTasks(arg) {
   let filteredArray = filterTasks(arg, taskArray);
   taskSpace.innerHTML = "";
-  taskSpace.innerHTML += 
-    `<div id="taskDiv">
-    <p>Due Date</p>
-    <p>Title</p>
-    <p>Priority</p>
-    <button id=></button>`;
+  taskSpace.innerHTML += heading;
   for (let i=0; i<filteredArray.length; i++) {
-  console.log(filteredArray);
-  taskSpace.innerHTML += 
-    `<div id="taskDiv">
-    <p>${filteredArray[i].dueDate}</p>
-    <p>${filteredArray[i].title}</p>
-    <p>${filteredArray[i].priority}</p>`;
+    console.log(taskArray);
+    taskSpace.innerHTML += 
+      `<div id="taskDiv">
+      <p>${filteredArray[i].dueDate}</p>
+      <p>${filteredArray[i].title}</p>
+      <p>${filteredArray[i].priority}</p>`;
     let deleteTaskBtn = document.createElement("button");
     deleteTaskBtn.innerHTML = "Delete";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
       console.log("brrr");
+      deleteTask(filteredArray[i].index)
+      console.log(taskArray);
+      showTasks(filteredArray[i].project);
     });
     taskSpace.appendChild(deleteTaskBtn);
   }
-  taskSpace.innerHTML += `<button id="addTaskBtn">Add task</button>`
-  addEventListener();
+  let addTaskBtn = document.createElement("button");
+  addTaskBtn.innerHTML = "Add Task"
+  addTaskBtn.addEventListener("click", () => {
+    taskForm.style.visibility = "visible" ;
+  });
+  taskSpace.appendChild(addTaskBtn);
 }
 
 addProjectBtn.addEventListener("click", () => {
@@ -79,13 +88,6 @@ function addProject(event) {
   newProjectForm.reset();
   newProjectForm.style.visibility = "hidden";
   event.preventDefault();
-};
-
-export function addEventListener() {
-  const addTaskBtn = document.getElementById("addTaskBtn")
-  addTaskBtn.addEventListener("click", () => {
-  taskForm.style.visibility = "visible" ;
-})
 };
 
 export function updateProjectSelect() {
