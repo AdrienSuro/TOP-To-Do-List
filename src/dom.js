@@ -35,8 +35,8 @@ export let taskNr = 0;
 
 function saveTask(event) {
   let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value, taskNr)
-  taskNr += 1;
   taskArray.push(newTask);
+  taskNr += 1;
   showTasks(newTask.project);
   newForm.reset();
   taskForm.style.visibility = "hidden"
@@ -65,9 +65,7 @@ function showTasks(arg) {
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
       console.log("inside event listener");
-      deleteTask(filteredArray[i].index)
-      console.log(taskArray);
-      console.log(taskNr);
+      deleteTask(filteredArray[i].index);
       wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);

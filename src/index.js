@@ -12,7 +12,8 @@ let addTaskBtn = document.getElementById("addTaskBtn")
   taskForm.style.visibility = "visible" ;
   })
 
-function createTask(title, dueDate, description, priority, project, index) {
+function createTask(title, dueDate, description, priority, project, taskA) {
+    const index = taskA
   return {title, dueDate, description, priority, project, index}
 }
 
@@ -21,15 +22,10 @@ function filterTasks(project, array) {
   return filteredTaskArray
 }
 
-// function deleteTask(i) {
-//   console.log("inside deleteTask")
-//   taskArray.splice(i, 1)
-//   console.log(taskArray);
-// }
-
 function deleteTask(i) {
   console.log(taskNr);
   console.log(taskArray);
-  console.log(taskArray.find((task) => {task.index = i}))
-  taskArray.splice(taskArray.indexOf(taskArray.find((task) => {task.index = i})), 1);
+  taskArray.splice((taskArray.indexOf(taskArray.find((task) => task.index === i))), 1);
+  // let testArray = taskArray.filter(function(e) { e.index !== i})
+  console.log(taskArray);
 }
