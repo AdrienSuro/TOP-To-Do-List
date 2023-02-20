@@ -1,5 +1,5 @@
-export {taskArray, projectArray, filterTasks, createTask, deleteTask}
-import { appendProjects, updateProjectSelect, addEventListener } from "./dom";
+export {taskArray, projectArray, filterTasks, createTask, deleteTask, taskNr}
+import { appendProjects, updateProjectSelect, taskNr } from "./dom";
 
 let taskArray = [];
 let projectArray = ["Default"];
@@ -12,8 +12,7 @@ let addTaskBtn = document.getElementById("addTaskBtn")
   taskForm.style.visibility = "visible" ;
   })
 
-function createTask(title, dueDate, description, priority, project) {
-  const index = (taskArray.length)
+function createTask(title, dueDate, description, priority, project, index) {
   return {title, dueDate, description, priority, project, index}
 }
 
@@ -22,8 +21,15 @@ function filterTasks(project, array) {
   return filteredTaskArray
 }
 
+// function deleteTask(i) {
+//   console.log("inside deleteTask")
+//   taskArray.splice(i, 1)
+//   console.log(taskArray);
+// }
+
 function deleteTask(i) {
-  console.log("inside deleteTask")
-  taskArray.splice(i, 1)
+  console.log(taskNr);
   console.log(taskArray);
+  console.log(taskArray.find((task) => {task.index = i}))
+  taskArray.splice(taskArray.indexOf(taskArray.find((task) => {task.index = i})), 1);
 }

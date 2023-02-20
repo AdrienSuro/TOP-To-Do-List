@@ -31,13 +31,18 @@ export function appendProjects() {
 
 newForm.addEventListener('submit', saveTask, false)
 
+export let taskNr = 0;
+
 function saveTask(event) {
-  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value)
-    taskArray.push(newTask);
-    showTasks(newTask.project);
-    newForm.reset();
-    taskForm.style.visibility = "hidden"
-    event.preventDefault();
+  let newTask = createTask(newForm.title.value, newForm.dueDate.value, newForm.description.value, newForm.priority.value, newForm.project.value, taskNr)
+  taskNr += 1;
+  taskArray.push(newTask);
+  showTasks(newTask.project);
+  newForm.reset();
+  taskForm.style.visibility = "hidden"
+  event.preventDefault();
+  console.log(taskNr);
+  console.log(taskArray);
 }
 
 closeForm.addEventListener('click', () => {
@@ -62,6 +67,7 @@ function showTasks(arg) {
       console.log("inside event listener");
       deleteTask(filteredArray[i].index)
       console.log(taskArray);
+      console.log(taskNr);
       wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);
