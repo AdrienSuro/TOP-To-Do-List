@@ -19,6 +19,13 @@ let heading =
   <p>Priority</p>
   <p>Delete task</p>`;
 
+// function createHeading() {
+//   let taskDiv = document.createElement('div').setAttribute("id", "taskDiv")
+//   let dueDateHeader = document.createElement('div')
+//   let dueDateButton = document.createElement('button')
+
+// }
+
 export function appendProjects() {
   for (let i=1; i<projectArray.length; i++) {
     let project = document.createElement('button');
@@ -77,6 +84,13 @@ function showTasks(arg) {
     taskForm.style.visibility = "visible" ;
   });
   taskSpace.appendChild(addTaskBtn);
+
+  let sortbyDateBtn = document.getElementById("sortbyDate");
+  sortbyDateBtn.addEventListener("click", () => {
+  console.log("inside sortbyDate")
+  sortTaskArray();
+  showTasks(arg);
+  })
 }
 
 addProjectBtn.addEventListener("click", () => {
