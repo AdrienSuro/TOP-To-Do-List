@@ -1,4 +1,4 @@
-import { taskArray, filterTasks, projectArray, createTask, deleteTask } from "./index.js"
+import { taskArray, filterTasks, projectArray, createTask, deleteTask, sortTaskArray } from "./index.js"
 
 const sidebarProjects = document.getElementById("sidebarProjects");
 const taskSpace = document.getElementById("taskSpace");
@@ -14,7 +14,7 @@ const closeForm = document.getElementById("closeForm")
 
 let heading = 
   `<div id="taskDiv">
-  <p>Due Date</p>
+  <p>Due Date <button id=sortbyDate>&#9660</button></p>
   <p>Title</p>
   <p>Priority</p>
   <p>Delete task</p>`;
@@ -106,12 +106,26 @@ showAllTasksBtn.addEventListener("click", showAllTasks)
 
 export function showAllTasks() {
   taskSpace.innerHTML = "";
+  taskSpace.innerHTML += heading;
+  sortTaskArray();
   for (let i=0; i<taskArray.length; i++) {
-    taskSpace.innerHTML += 
-    `<div id="taskDiv">
-    <p>${taskArray[i].dueDate}</p>
+    let wrapper = document.createElement("div");
+    wrapper.setAttribute("id", "taskDiv");
+    wrapper.innerHTML = 
+    `<p>${taskArray[i].dueDate}</p>
     <p>${taskArray[i].title}</p>
     <p>${taskArray[i].priority}</p>`
+    let deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.innerHTML = "X";
+    deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
+    deleteTaskBtn.addEventListener("click", () => {
+      console.log("inside event listener");
+      deleteTask(taskArray[i].index);
+      console.log(taskArray);
+      wrapper.remove();
+    });
+    wrapper.appendChild(deleteTaskBtn);
+    taskSpace.appendChild(wrapper);
   }
   let addTaskBtn = document.createElement("button");
   addTaskBtn.innerHTML = "Add Task"

@@ -26,6 +26,11 @@ function deleteTask(i) {
   console.log(taskNr);
   console.log(taskArray);
   taskArray.splice((taskArray.indexOf(taskArray.find((task) => task.index === i))), 1);
-  // let testArray = taskArray.filter(function(e) { e.index !== i})
   console.log(taskArray);
+}
+
+export function sortTaskArray() {
+  taskArray.sort(function(a,b) {
+    return new Date(a.dueDate) - new Date(b.dueDate)
+  })
 }

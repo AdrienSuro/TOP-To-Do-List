@@ -81,11 +81,6 @@ button {
   transform: scale(1.1)
 }  
 
-#showAllTasksBtn {
-  /* margin-top: auto;
-  justify-self: end; */
-}
-
 #taskSpace {
   grid-row: 2/3;
   grid-column: 2/3;
@@ -99,6 +94,11 @@ button {
 #finger2 {
   font-size: 2rem;
   margin-left: 35px;
+}
+
+[id^='sortby'] {
+  background: none;
+  border: none;
 }
 
 #projectBtn {
