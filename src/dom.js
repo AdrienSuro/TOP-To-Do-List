@@ -1,4 +1,4 @@
-import { taskArray, filterTasks, projectArray, createTask, deleteTask, sortTaskArray } from "./index.js"
+import { taskArray, filterTasks, projectArray, createTask, deleteTask, sortByDateFct } from "./index.js"
 
 const sidebarProjects = document.getElementById("sidebarProjects");
 const taskSpace = document.getElementById("taskSpace");
@@ -87,9 +87,11 @@ function showTasks(arg) {
 
   let sortbyDateBtn = document.getElementById("sortbyDate");
   sortbyDateBtn.addEventListener("click", () => {
-  console.log("inside sortbyDate")
-  sortTaskArray();
+  sortByDateFct("ascending");
   showTasks(arg);
+  console.log("inside sort by date")
+  let sortbyDateBtn = document.getElementById("sortbyDate");
+  sortbyDateBtn.style.transform = "rotate(180deg)";
   })
 }
 

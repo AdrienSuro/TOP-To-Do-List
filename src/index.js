@@ -29,8 +29,13 @@ function deleteTask(i) {
   console.log(taskArray);
 }
 
-export function sortTaskArray() {
-  taskArray.sort(function(a,b) {
-    return new Date(a.dueDate) - new Date(b.dueDate)
-  })
+export function sortByDateFct(order) {
+  if (order === "ascending") {
+    taskArray.sort(function(a,b) {
+      return new Date(a.dueDate) - new Date(b.dueDate)
+    })}
+  else if (order === "descending") {
+    taskArray.sort(function(a,b) {
+      return new Date(b.dueDate) - new Date(a.dueDate)
+    })}
 }
