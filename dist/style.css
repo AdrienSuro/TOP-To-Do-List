@@ -35,8 +35,19 @@ button {
   color: white;
 }
 
-#sidebar {
+#headerSpace {
+  background-color: lightgoldenrodyellow;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+#ifNoTaskDiv {
   grid-row: 2/3;
+  grid-column: 2/3;
+}
+
+#sidebar {
+  grid-row: 2/4;
   grid-column: 1/2;
   background-color: ghostwhite;
   display: flex;
@@ -81,10 +92,17 @@ button {
   transform: scale(1.1)
 }  
 
-#taskSpace {
+#mainSpace {
   grid-row: 2/3;
   grid-column: 2/3;
   font-size: 1.3rem;
+  display: flex;
+  flex-flow: column;
+  visibility: hidden;
+}
+
+#taskSpace {
+  visibility: hidden;
 }
 
 #finger {

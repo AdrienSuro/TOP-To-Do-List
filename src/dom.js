@@ -1,4 +1,4 @@
-import { taskArray, filterTasks, projectArray, createTask, deleteTask, sortByDateFct } from "./index.js"
+import { taskArray, filterTasks, projectArray, createTask, deleteTask } from "./index.js"
 
 const sidebarProjects = document.getElementById("sidebarProjects");
 const taskSpace = document.getElementById("taskSpace");
@@ -10,9 +10,12 @@ const submitNewProjectBtn = document.getElementById("submitNewProjectBtn")
 const addProjectBtn = document.getElementById("addProjectBtn");
 const showAllTasksBtn = document.getElementById("showAllTasksBtn");
 const newForm = document.getElementById("taskForm");
-const closeForm = document.getElementById("closeForm")
-export let reversed = false;
-
+const closeForm = document.getElementById("closeForm");
+const ifNoTaskDiv = document.getElementById("ifNoTaskDiv");
+const headerSpace = document.getElementById("headerSpace");
+const mainSpace = document.getElementById("mainSpace");
+let reversed = false;
+let headingDisplayed = false;
 
 let heading = 
   `<div id="taskDiv">
@@ -20,13 +23,6 @@ let heading =
   <p>Title</p>
   <p>Priority</p>
   <p>Delete task</p>`;
-
-// function createHeading() {
-//   let taskDiv = document.createElement('div').setAttribute("id", "taskDiv")
-//   let dueDateHeader = document.createElement('div')
-//   let dueDateButton = document.createElement('button')
-
-// }
 
 export function appendProjects() {
   for (let i=1; i<projectArray.length; i++) {
@@ -38,7 +34,7 @@ export function appendProjects() {
   }
 };
 
-newForm.addEventListener('submit', saveTask, false)
+newForm.addEventListener('submit', saveTask, false);
 
 export let taskNr = 0;
 
@@ -58,8 +54,17 @@ closeForm.addEventListener('click', () => {
 
 function showTasks(arg) {
   let filteredArray = filterTasks(arg, taskArray);
+  ifNoTaskDiv.remove();
+  mainSpace.style.visibility = "visible";
   taskSpace.innerHTML = "";
-  taskSpace.innerHTML += heading;
+  taskSpace.style.visibility = "visible";
+  
+  if (!headingDisplayed) {
+    headerSpace.innerHTML = heading;
+    headingDisplayed = true;
+    console.log("inside display heading")
+    addSortingPossibility()
+  }
   for (let i=0; i<filteredArray.length; i++) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("id", "taskDiv");
@@ -84,19 +89,7 @@ function showTasks(arg) {
     taskForm.style.visibility = "visible" ;
   });
   taskSpace.appendChild(addTaskBtn);
-
-  let sortbyDateBtn = document.getElementById("sortbyDate");
-  sortbyDateBtn.addEventListener("click", () => {
-  // sortByDateFct("ascending");
-  // showTasks(arg);
-  console.log("inside sort by date");
-  reversed ? sortByDateFct("descending").this : sortByDateFct("ascending");
-  })
 }
-
-  // sortbyDateBtn.style.transform = "rotate(0deg)" : () => {
-  //   sortbyDateBtn.style.transform = "rotate(180deg)";
-  //   reversed = true;}
 
 addProjectBtn.addEventListener("click", () => {
   newProjectForm.style.visibility = "visible"
@@ -123,10 +116,16 @@ export function updateProjectSelect() {
 
 showAllTasksBtn.addEventListener("click", showAllTasks)
 
-export function showAllTasks() {
+function showAllTasks() {
+  mainSpace.style.visibility = "visible";
   taskSpace.innerHTML = "";
-  taskSpace.innerHTML += heading;
-  sortTaskArray();
+  taskSpace.style.visibility = "visible";
+  ifNoTaskDiv.remove();
+  if (!headingDisplayed) {
+    headerSpace.innerHTML = heading;
+    headingDisplayed = true;
+    addSortingPossibility()
+  }
   for (let i=0; i<taskArray.length; i++) {
     let wrapper = document.createElement("div");
     wrapper.setAttribute("id", "taskDiv");
@@ -153,3 +152,33 @@ export function showAllTasks() {
   });
   taskSpace.appendChild(addTaskBtn);
 };
+
+function sortByDateFct(order) {
+  if (order === "ascending") {
+    console.log("inside ascending")
+    reversed = true;
+    let sortbyDateBtn = document.getElementById("sortbyDate");
+    sortbyDateBtn.style.transform = "rotate(180deg)";
+    taskArray.sort(function(a,b) {
+      return new Date(a.dueDate) - new Date(b.dueDate)
+    })
+    showAllTasks()
+  }
+  else if (order === "descending") {
+    console.log("inside descending")
+    let sortbyDateBtn = document.getElementById("sortbyDate");
+    sortbyDateBtn.style.transform = "rotate(0deg)";
+    reversed = false;
+    taskArray.sort(function(a,b) {
+      return new Date(b.dueDate) - new Date(a.dueDate)
+    })
+    showAllTasks()
+  }
+}
+
+function addSortingPossibility() {
+  let sortbyDateBtn = document.getElementById("sortbyDate");
+  sortbyDateBtn.addEventListener("click", () => {
+  reversed ? sortByDateFct("descending") : sortByDateFct("ascending")
+  });
+}
