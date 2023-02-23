@@ -11,6 +11,8 @@ const addProjectBtn = document.getElementById("addProjectBtn");
 const showAllTasksBtn = document.getElementById("showAllTasksBtn");
 const newForm = document.getElementById("taskForm");
 const closeForm = document.getElementById("closeForm")
+export let reversed = false;
+
 
 let heading = 
   `<div id="taskDiv">
@@ -48,8 +50,6 @@ function saveTask(event) {
   newForm.reset();
   taskForm.style.visibility = "hidden"
   event.preventDefault();
-  console.log(taskNr);
-  console.log(taskArray);
 }
 
 closeForm.addEventListener('click', () => {
@@ -87,13 +87,16 @@ function showTasks(arg) {
 
   let sortbyDateBtn = document.getElementById("sortbyDate");
   sortbyDateBtn.addEventListener("click", () => {
-  sortByDateFct("ascending");
-  showTasks(arg);
-  console.log("inside sort by date")
-  let sortbyDateBtn = document.getElementById("sortbyDate");
-  sortbyDateBtn.style.transform = "rotate(180deg)";
+  // sortByDateFct("ascending");
+  // showTasks(arg);
+  console.log("inside sort by date");
+  reversed ? sortByDateFct("descending").this : sortByDateFct("ascending");
   })
 }
+
+  // sortbyDateBtn.style.transform = "rotate(0deg)" : () => {
+  //   sortbyDateBtn.style.transform = "rotate(180deg)";
+  //   reversed = true;}
 
 addProjectBtn.addEventListener("click", () => {
   newProjectForm.style.visibility = "visible"
