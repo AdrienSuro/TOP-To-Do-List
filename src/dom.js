@@ -65,8 +65,7 @@ function showTasks(arg) {
   }
 
   if (arg !== "All tasks") {
-    let filteredArray = filterTasks(arg, taskArray);
-    showTaskDiv(filteredArray);
+    showTaskDiv(filterTasks(arg, taskArray));
   }
 
   if (arg === "All tasks") {
