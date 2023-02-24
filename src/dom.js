@@ -18,8 +18,7 @@ let reversed = false;
 let headingDisplayed = false;
 
 let heading = 
-  `<div id="taskDiv">
-  <p>Due Date <button id=sortbyDate>&#9660</button></p>
+  `<p>Due Date <button id=sortbyDate>&#9660</button></p>
   <p>Title</p>
   <p>Priority</p>
   <p>Delete task</p>`;
@@ -53,7 +52,6 @@ closeForm.addEventListener('click', () => {
 })
 
 function showTasks(arg) {
-  let filteredArray = filterTasks(arg, taskArray);
   ifNoTaskDiv.remove();
   mainSpace.style.visibility = "visible";
   taskSpace.innerHTML = "";
@@ -65,19 +63,30 @@ function showTasks(arg) {
     console.log("inside display heading")
     addSortingPossibility()
   }
-  for (let i=0; i<filteredArray.length; i++) {
+
+  if (arg !== "All tasks") {
+    let filteredArray = filterTasks(arg, taskArray);
+    showTaskDiv(filteredArray);
+  }
+
+  if (arg === "All tasks") {
+    showTaskDiv(taskArray)
+  }
+}
+
+function showTaskDiv(array) {
+  for (let i=0; i<array.length; i++) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("id", "taskDiv");
     wrapper.innerHTML = 
-      `<p>${filteredArray[i].dueDate}</p>
-      <p>${filteredArray[i].title}</p>
-      <p>${filteredArray[i].priority}</p>`
+      `<p>${array[i].dueDate}</p>
+      <p>${array[i].title}</p>
+      <p>${array[i].priority}</p>`
     let deleteTaskBtn = document.createElement("button");
     deleteTaskBtn.innerHTML = "X";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
-      console.log("inside event listener");
-      deleteTask(filteredArray[i].index);
+      deleteTask(array[i].index);
       wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);
@@ -114,44 +123,7 @@ export function updateProjectSelect() {
   }
 };
 
-showAllTasksBtn.addEventListener("click", showAllTasks)
-
-function showAllTasks() {
-  mainSpace.style.visibility = "visible";
-  taskSpace.innerHTML = "";
-  taskSpace.style.visibility = "visible";
-  ifNoTaskDiv.remove();
-  if (!headingDisplayed) {
-    headerSpace.innerHTML = heading;
-    headingDisplayed = true;
-    addSortingPossibility()
-  }
-  for (let i=0; i<taskArray.length; i++) {
-    let wrapper = document.createElement("div");
-    wrapper.setAttribute("id", "taskDiv");
-    wrapper.innerHTML = 
-    `<p>${taskArray[i].dueDate}</p>
-    <p>${taskArray[i].title}</p>
-    <p>${taskArray[i].priority}</p>`
-    let deleteTaskBtn = document.createElement("button");
-    deleteTaskBtn.innerHTML = "X";
-    deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
-    deleteTaskBtn.addEventListener("click", () => {
-      console.log("inside event listener");
-      deleteTask(taskArray[i].index);
-      console.log(taskArray);
-      wrapper.remove();
-    });
-    wrapper.appendChild(deleteTaskBtn);
-    taskSpace.appendChild(wrapper);
-  }
-  let addTaskBtn = document.createElement("button");
-  addTaskBtn.innerHTML = "Add Task"
-  addTaskBtn.addEventListener("click", () => {
-    taskForm.style.visibility = "visible" ;
-  });
-  taskSpace.appendChild(addTaskBtn);
-};
+showAllTasksBtn.addEventListener("click", () => showTasks("All tasks"))
 
 function sortByDateFct(order) {
   if (order === "ascending") {
@@ -162,7 +134,7 @@ function sortByDateFct(order) {
     taskArray.sort(function(a,b) {
       return new Date(a.dueDate) - new Date(b.dueDate)
     })
-    showAllTasks()
+    showTasks("All tasks")
   }
   else if (order === "descending") {
     console.log("inside descending")
@@ -172,7 +144,7 @@ function sortByDateFct(order) {
     taskArray.sort(function(a,b) {
       return new Date(b.dueDate) - new Date(a.dueDate)
     })
-    showAllTasks()
+    showTasks("All tasks")
   }
 }
 

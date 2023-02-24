@@ -39,6 +39,9 @@ button {
   background-color: lightgoldenrodyellow;
   margin: 10px;
   border-radius: 20px;
+  padding: 5px;
+  display : grid;
+  grid-template-columns: 1fr 4fr 1fr 1fr;
 }
 
 #ifNoTaskDiv {
@@ -117,6 +120,7 @@ button {
 [id^='sortby'] {
   background: none;
   border: none;
+  margin-bottom: 6px;
 }
 
 #projectBtn {
@@ -157,12 +161,6 @@ button {
   padding: 5px;
   display : grid;
   grid-template-columns: 1fr 4fr 1fr 1fr;
-}
-
-#taskDiv:first-child {
-  border: none;
-  background-color: transparent;
-  font-size: 1.4rem;
 }
 
 #deleteTaskBtn {
