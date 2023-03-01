@@ -1,5 +1,5 @@
 export {taskArray, projectArray, filterTasks, createTask, deleteTask, taskNr}
-import { appendProjects, updateProjectSelect, taskNr } from "./dom";
+import { appendProjects, updateProjectSelect, taskNr, showTasks } from "./dom";
 
 let taskArray = [];
 let projectArray = ["Default"];
@@ -14,7 +14,14 @@ let addTaskBtn = document.getElementById("addTaskBtn")
 
 function createTask(title, dueDate, description, priority, project, taskA) {
     const index = taskA
-  return {title, dueDate, description, priority, project, index}
+    const test = function() {
+      console.log(title)
+      title = prompt("Give me a new title");
+      showTasks(project);
+      console.log(`the new title is` + title)
+      return title
+    }
+  return {title, dueDate, description, priority, project, index, test}
 }
 
 function filterTasks(project, array) {

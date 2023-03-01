@@ -51,7 +51,8 @@ closeForm.addEventListener('click', () => {
   taskForm.style.visibility = "hidden";
 })
 
-function showTasks(arg) {
+export function showTasks(arg) {
+  console.log("inside showtasks")
   ifNoTaskDiv.remove();
   mainSpace.style.visibility = "visible";
   taskSpace.innerHTML = "";
@@ -74,6 +75,7 @@ function showTasks(arg) {
 }
 
 function showTaskDiv(array) {
+  console.log("inside showtaskdiv")
   for (let i=0; i<array.length; i++) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("id", "taskDiv");
@@ -85,8 +87,9 @@ function showTaskDiv(array) {
     deleteTaskBtn.innerHTML = "X";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
-      deleteTask(array[i].index);
-      wrapper.remove();
+      array[i].test.call();
+      // deleteTask(array[i].index);
+      // wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);
     taskSpace.appendChild(wrapper);
@@ -151,5 +154,6 @@ function addSortingPossibility() {
   let sortbyDateBtn = document.getElementById("sortbyDate");
   sortbyDateBtn.addEventListener("click", () => {
   reversed ? sortByDateFct("descending") : sortByDateFct("ascending")
+  console.log(taskArray)
   });
 }
