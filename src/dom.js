@@ -87,7 +87,8 @@ function showTaskDiv(array) {
     deleteTaskBtn.innerHTML = "X";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
-      array[i].test.call();
+      array[i].test()
+      showTasks(array[i].project);
       // deleteTask(array[i].index);
       // wrapper.remove();
     });
