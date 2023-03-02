@@ -89,9 +89,17 @@ function showTaskDiv(array) {
       // wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);
-    let checkbox = document.createElement("span").innerHTML = "check_box_outline_blank";
-    checkbox.setAttribute("class", "material-symbols-outlined")
-    wrapper.appendChild(checkbox);
+    let checkbox = document.createElement("img")
+    if (array[i].checked === true) {
+      checkbox.setAttribute("src", "checked.png")
+    }
+    else {
+      checkbox.setAttributet("src", "unchecked.png")
+    }
+    checkbox.addEventListener("click", () => {
+      array[i].checked === false ? array[i].checked = true : array[i].checked = false;
+      showTasks(array[i].project)
+    })
     taskSpace.appendChild(wrapper);
   }
   let addTaskBtn = document.createElement("button");
