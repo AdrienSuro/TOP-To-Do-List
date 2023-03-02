@@ -15,11 +15,8 @@ let addTaskBtn = document.getElementById("addTaskBtn")
 function createTask(title, dueDate, description, priority, project, taskA) {
     const index = taskA
     const test = function() {
-      console.log(title)
       this.title = prompt("Give me a new title");
       showTasks(project);
-      console.log(`the new title is` + title)
-      console.log(taskArray)
       return title
     }
   return {title, dueDate, description, priority, project, index, test}

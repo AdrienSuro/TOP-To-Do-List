@@ -36,7 +36,7 @@ button {
 }
 
 #headerSpace {
-  background-color: lightgoldenrodyellow;
+  background-color: rgb(255, 255, 255);
   margin: 10px;
   border-radius: 20px;
   padding: 5px;

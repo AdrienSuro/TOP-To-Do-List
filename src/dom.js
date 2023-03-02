@@ -52,7 +52,6 @@ closeForm.addEventListener('click', () => {
 })
 
 export function showTasks(arg) {
-  console.log("inside showtasks")
   ifNoTaskDiv.remove();
   mainSpace.style.visibility = "visible";
   taskSpace.innerHTML = "";
@@ -61,7 +60,6 @@ export function showTasks(arg) {
   if (!headingDisplayed) {
     headerSpace.innerHTML = heading;
     headingDisplayed = true;
-    console.log("inside display heading")
     addSortingPossibility()
   }
 
@@ -75,7 +73,6 @@ export function showTasks(arg) {
 }
 
 function showTaskDiv(array) {
-  console.log("inside showtaskdiv")
   for (let i=0; i<array.length; i++) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("id", "taskDiv");
@@ -88,11 +85,13 @@ function showTaskDiv(array) {
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
       array[i].test()
-      showTasks(array[i].project);
       // deleteTask(array[i].index);
       // wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);
+    let checkbox = document.createElement("span").innerHTML = "check_box_outline_blank";
+    checkbox.setAttribute("class", "material-symbols-outlined")
+    wrapper.appendChild(checkbox);
     taskSpace.appendChild(wrapper);
   }
   let addTaskBtn = document.createElement("button");
