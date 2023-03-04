@@ -72,34 +72,44 @@ export function showTasks(arg) {
   }
 }
 
+//line 80/84 trying to add an event listener but the form produces a bug then
 function showTaskDiv(array) {
   for (let i=0; i<array.length; i++) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("id", "taskDiv");
-    wrapper.innerHTML = 
-      `<p>${array[i].dueDate}</p>
-      <p>${array[i].title}</p>
+    let expand = document.createElement("div");
+    expand.innerHTML = "oo"
+    // expand.style.backgroundImage = url("../src/img/chevron-bas.png");
+    expand.addEventListener("click", () => {console.log("hi expand")})
+    wrapper.appendChild(expand);
+    let checkbox = document.createElement("img")
+    if (array[i].checked === true) {
+      checkbox.setAttribute("src", "..src/img/checked.png")
+      console.log("unchecking me")
+    }
+    else {
+      checkbox.setAttribute("src", "../src/img/unchecked.png")
+      checkbox.setAttribute("id", "checkbox")
+      console.log("checking the box")
+    }
+    wrapper.appendChild(checkbox);
+    checkbox.addEventListener("click", () => {
+      console.log("inside event listener");
+      array[i].checked === false ? array[i].checked = true : array[i].checked = false;
+      showTasks(array[i].project);
+    });
+    wrapper.innerHTML += 
+      `<p>${array[i].title}</p>
+      <p>${array[i].dueDate}</p>
       <p>${array[i].priority}</p>`
     let deleteTaskBtn = document.createElement("button");
     deleteTaskBtn.innerHTML = "X";
     deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
     deleteTaskBtn.addEventListener("click", () => {
-      array[i].test()
-      // deleteTask(array[i].index);
-      // wrapper.remove();
+      deleteTask(array[i].index);
+      wrapper.remove();
     });
     wrapper.appendChild(deleteTaskBtn);
-    let checkbox = document.createElement("img")
-    if (array[i].checked === true) {
-      checkbox.setAttribute("src", "checked.png")
-    }
-    else {
-      checkbox.setAttributet("src", "unchecked.png")
-    }
-    checkbox.addEventListener("click", () => {
-      array[i].checked === false ? array[i].checked = true : array[i].checked = false;
-      showTasks(array[i].project)
-    })
     taskSpace.appendChild(wrapper);
   }
   let addTaskBtn = document.createElement("button");

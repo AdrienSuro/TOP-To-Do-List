@@ -19,7 +19,8 @@ function createTask(title, dueDate, description, priority, project, taskA) {
       showTasks(project);
       return title
     }
-  return {title, dueDate, description, priority, project, index, test}
+    const checked = false;
+  return {title, dueDate, description, priority, project, index, test, checked}
 }
 
 function filterTasks(project, array) {

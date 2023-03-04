@@ -160,7 +160,7 @@ button {
   margin: 10px;
   padding: 5px;
   display : grid;
-  grid-template-columns: 1fr 4fr 1fr 1fr;
+  grid-template-columns: 3vw 3vw 1fr 7vw 3vw 3vw 3vw;
 }
 
 #deleteTaskBtn {
